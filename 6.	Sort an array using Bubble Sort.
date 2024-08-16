@@ -1,0 +1,39 @@
+#include <stdio.h>
+#define size 5
+
+void bubble(int arr[], int Size) {
+    int swapped;
+    int temp;
+
+    for (int i = 0; i < Size - 1; i++) {
+        swapped = 0;
+        for (int j = 0; j < Size - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Swap elements
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = 1;
+            }
+        }
+        // If no elements were swapped, the array is sorted
+        if (!swapped) {
+            break;
+        }
+    }
+}
+
+int main() {
+    int arr[size] = {5, 4, 3, 2, 1};
+
+    // Sort the array
+    bubble(arr, size);
+
+    // Print the sorted array
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
