@@ -1,0 +1,27 @@
+#include<stdio.h>
+#define s 10
+
+int main()
+{
+    int arr[s] = {1, 1, 2, 2, 2, 3, 3, 3, 4, 5};
+    int newarr[s]; // Initialize newarr with size s
+    int k = 0; // Initialize k to 0
+    
+    newarr[0] = arr[0]; // Set the first element of newarr to the first element of arr
+    k = 1; // Start index for newarr
+    
+    for(int i = 1; i < s; i++)
+    {
+        if(arr[i] != arr[i - 1]) // Check if the current element is different from the previous one
+        {
+            newarr[k++] = arr[i]; // Add the unique element to newarr
+        }
+    }
+    
+    for(int i = 0; i < k; i++) // Print the elements of newarr
+    {
+        printf("%d ", newarr[i]);
+    }
+    
+    return 0;
+}
