@@ -1,0 +1,32 @@
+#include<stdio.h>
+#define s 10
+
+int secondLargest(int arr[], int size)
+{
+    for(int i = size - 1; i > 0; i--)
+    {
+        if(arr[i] != arr[i - 1])
+        {
+            return arr[i - 1];
+        }
+    }
+
+    return -1;
+}
+
+int main()
+{
+    int arr[s] = {1, 5, 5, 5, 7, 7, 7, 7, 7, 7};
+    int secLargest = secondLargest(arr, s);
+
+    if(secLargest != -1)
+    {
+        printf("The second largest element is %d\n", secLargest);
+    }
+    else
+    {
+        printf("There is no second largest element.\n");
+    }
+
+    return 0;
+}
