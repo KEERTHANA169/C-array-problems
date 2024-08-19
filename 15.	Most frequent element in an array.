@@ -1,0 +1,26 @@
+#include<stdio.h>
+#define s 10
+
+int main() {
+    int arr[s] = {1, 1, 2, 3, 3, 3, 3, 3, 3, 5};
+    int count[10] = {0};  // Adjust size if needed for different ranges of numbers
+    int i;
+
+    // Count the frequency of each element
+    for(i = 0; i < s; i++) {
+        count[arr[i]]++;
+    }
+
+    // Find the most frequent element
+    int max = count[0];
+    int mostFrequent = 0;  // Initialize with the first element in count array
+    for(i = 1; i < 10; i++) {
+        if(count[i] > max) {
+            max = count[i];
+            mostFrequent = i;
+        }
+    }
+
+    printf("Most frequent element is %d with %d occurrences.\n", mostFrequent, max);
+    return 0;
+}
