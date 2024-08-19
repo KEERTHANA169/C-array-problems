@@ -1,0 +1,22 @@
+#include<stdio.h>
+#define s 6
+
+int main() {
+    int arr[s] = {2, 4, 6, 5, 8, 1};
+    int n = 2;
+
+    for(int i = 0; i < n; i++) {
+        int temp = arr[s-1];
+        for(int j = s-1; j > 0; j--) {
+            arr[j] = arr[j-1];
+        }
+        arr[0] = temp;
+    }
+
+    // Print the rotated array
+    for(int i = 0; i < s; i++) {
+        printf("%d ", arr[i]);
+    }
+    
+    return 0;
+}
