@@ -1,0 +1,47 @@
+#include<stdio.h>
+#define size1 10
+#define size2 6
+
+void merge(int arr1[], int arr2[], int mergedarr[], int Size1, int Size2) // Corrected comma
+{
+    int i = 0, j = 0, k = 0;
+
+    while (i < Size1 && j < Size2) 
+    {
+        if (arr1[i] < arr2[j]) 
+        {
+            mergedarr[k++] = arr1[i++];
+        } 
+        else 
+        {
+            mergedarr[k++] = arr2[j++];
+        }
+    }
+
+    while (i < Size1) // Corrected case
+    {
+        mergedarr[k++] = arr1[i++];
+    }
+
+    while (j < Size2) // Corrected case
+    {
+        mergedarr[k++] = arr2[j++];
+    }
+}
+
+int main()
+{
+    int arr1[size1] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int arr2[size2] = {1, 2, 3, 4, 5, 6};
+    int size3 = size1 + size2;
+    int mergedarr[size3];
+
+    merge(arr1, arr2, mergedarr, size1, size2);
+
+    for (int i = 0; i < size3; i++)
+    {
+        printf("%d ", mergedarr[i]);
+    }
+    
+    return 0;
+}
