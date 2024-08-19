@@ -1,0 +1,32 @@
+#include<stdio.h>
+#define s 10
+
+int secondSmallest(int arr[], int size)
+{
+    for(int i = 0; i < size - 1; i++)
+    {
+        if(arr[i] != arr[i + 1]) // Find the first element different from the smallest
+        {
+            return arr[i + 1];
+        }
+    }
+
+    return -1; // Return -1 if no second smallest element exists
+}
+
+int main()
+{
+    int arr[s] = {1, 1, 1, 1, 2, 5, 7, 7, 9, 10};
+    int secSmallest = secondSmallest(arr, s);
+
+    if(secSmallest != -1)
+    {
+        printf("The second smallest element is %d\n", secSmallest);
+    }
+    else
+    {
+        printf("There is no second smallest element.\n");
+    }
+
+    return 0;
+}
