@@ -1,0 +1,25 @@
+#include<stdio.h>
+#define s 11
+
+int main()
+{
+    int arr[s] = {2, 3, 6, 3, 4, 6, 7, 1, 10, 12}; // Notice the array has only 10 elements, so 1 element is left uninitialized.
+    int index = 5;
+    int val = 5;
+    
+    // Shift elements to the right to make space for the new element
+    for(int i = s - 1; i > index; i--)
+    {
+        arr[i] = arr[i-1];
+    }
+
+    // Insert the new value
+    arr[index] = val;
+
+    // Print the array
+    for(int i = 0; i < s; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
