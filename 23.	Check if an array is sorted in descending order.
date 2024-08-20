@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+bool isSortedDescending(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        if (arr[i] < arr[i + 1]) {
+            return false; // Array is not sorted in descending order
+        }
+    }
+    return true; // Array is sorted in descending order
+}
+
+int main() {
+    int arr[] = {5, 4, 3, 2, 1}; // Example array
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    if (isSortedDescending(arr, n)) {
+        printf("The array is sorted in descending order.\n");
+    } else {
+        printf("The array is not sorted in descending order.\n");
+    }
+
+    return 0;
+}
