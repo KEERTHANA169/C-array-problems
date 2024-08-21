@@ -1,0 +1,64 @@
+#include <stdio.h>
+
+#define S1 3
+#define S2 4
+
+// Function to merge two sorted arrays into a third array
+void merge(int a1[], int a2[], int a3[], int S1, int S2) {
+    int i = 0, j = 0, k = 0;
+
+    // Merge elements from both arrays in sorted order
+    while (i < S1 && j < S2) {
+        if (a1[i] < a2[j]) {
+            a3[k++] = a1[i++];
+        } else {
+            a3[k++] = a2[j++];
+        }
+    }
+
+    // Add remaining elements from a1 (if any)
+    while (i < S1) {
+        a3[k++] = a1[i++];
+    }
+
+    // Add remaining elements from a2 (if any)
+    while (j < S2) {
+        a3[k++] = a2[j++];
+    }
+}
+
+// Function to remove duplicates from the merged array
+int removeDuplicates(int a3[], int S3, int newArr[]) {
+    newArr[0] = a3[0];
+    int k = 1;
+
+    // Iterate through the merged array and add only unique elements to newArr
+    for (int i = 1; i < S3; i++) {
+        if (a3[i] != a3[i - 1]) {
+            newArr[k++] = a3[i];
+        }
+    }
+
+    return k; // Return the size of the new array with unique elements
+}
+
+int main() {
+    int a1[S1] = {1, 1, 2};
+    int a2[S2] = {2, 3, 4, 4};
+    int S3 = S1 + S2;
+    int a3[S3];
+    int newArr[S3];
+
+    // Merge the two arrays
+    merge(a1, a2, a3, S1, S2);
+
+    // Remove duplicates from the merged array
+    int newSize = removeDuplicates(a3, S3, newArr);
+
+    // Print the unique elements of the union of a1 and a2
+    for (int i = 0; i < newSize; i++) {
+        printf("%d ", newArr[i]);
+    }
+
+    return 0;
+}
