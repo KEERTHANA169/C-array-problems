@@ -1,0 +1,75 @@
+#include<stdio.h>
+#define SIZE_ARRAY1 4
+#define SIZE_ARRAY2 7
+
+// Function to remove duplicates from a sorted array
+int removeDuplicates(int intersectArray[], int intersectSize, int uniqueArray[])
+{
+    if (intersectSize == 0) return 0; // Handle case where no intersection is found
+    
+    int uniqueIndex = 0;
+    uniqueArray[uniqueIndex++] = intersectArray[0]; // Add the first element
+    
+    for(int i = 1; i < intersectSize; i++)
+    {
+        if(intersectArray[i] != intersectArray[i - 1])
+        {
+            uniqueArray[uniqueIndex++] = intersectArray[i];
+        }
+    }
+    return uniqueIndex;
+}
+
+// Function to sort an array (simple bubble sort for small arrays)
+void sortArray(int arr[], int n)
+{
+    for(int i = 0; i < n - 1; i++)
+    {
+        for(int j = 0; j < n - i - 1; j++)
+        {
+            if(arr[j] > arr[j + 1])
+            {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main()
+{
+    int array1[SIZE_ARRAY1] = {1, 2, 3, 4};
+    int array2[SIZE_ARRAY2] = {1, 2, 3, 4, 5, 6, 7};
+    int intersectArray[SIZE_ARRAY1 + SIZE_ARRAY2]; // Array to store intersection elements
+    int intersectSize = 0;
+
+    // Find the intersection of array1 and array2
+    for(int i = 0; i < SIZE_ARRAY1; i++)
+    {
+        for(int j = 0; j < SIZE_ARRAY2; j++)
+        {
+            if(array1[i] == array2[j])
+            {
+                intersectArray[intersectSize++] = array1[i];
+            }
+        }
+    }
+
+    // Sort the intersection array before removing duplicates
+    sortArray(intersectArray, intersectSize);
+
+    // Remove duplicates from the intersection array
+    int uniqueArray[SIZE_ARRAY1 + SIZE_ARRAY2]; // Array to store unique intersection elements
+    int uniqueSize = removeDuplicates(intersectArray, intersectSize, uniqueArray);
+
+    // Print the unique intersecting elements
+    printf("Intersection of arrays: ");
+    for(int i = 0; i < uniqueSize; i++)
+    {
+        printf("%d ", uniqueArray[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
