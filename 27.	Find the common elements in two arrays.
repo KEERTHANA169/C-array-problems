@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+int main() {
+    int a1[5] = {1, 2, 3, 4, 5};
+    int a2[5] = {2, 3, 5, 6, 7};
+    int newarr[5]; // Array size is based on possible common elements
+    int k = 0;
+
+    // Find common elements
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (a1[i] == a2[j]) {
+                // Check for duplicates
+                bool found = false;
+                for (int l = 0; l < k; l++) {
+                    if (newarr[l] == a1[i]) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    newarr[k++] = a1[i];
+                }
+                break; // Break out of the inner loop to avoid unnecessary checks
+            }
+        }
+    }
+
+    // Print common elements
+    for (int i = 0; i < k; i++) {
+        printf("%d ", newarr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
