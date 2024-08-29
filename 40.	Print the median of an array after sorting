@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+// Bubble sort function to sort the array
+void bubble(int arr[], int n) {
+    int temp;
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int n;
+    
+    // Read the number of elements
+    scanf("%d", &n);
+    
+    int arr[n];
+    
+    // Read the elements of the array
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Sort the array
+    bubble(arr, n);
+
+    // Calculate and print the median
+    if (n % 2 == 0) {
+        // For even-sized arrays, print the average of the two middle numbers
+        int mid1 = arr[n / 2 - 1];
+        int mid2 = arr[n / 2];
+        printf("%d\n", (mid1 + mid2) / 2);
+    } else {
+        // For odd-sized arrays, print the middle number
+        printf("%d\n", arr[n / 2]);
+    }
+
+    return 0;
+}
