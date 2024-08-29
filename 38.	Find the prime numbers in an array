@@ -1,0 +1,36 @@
+#include<stdio.h> 
+
+int main() { 
+    int i, n;
+    
+    // Read the number of elements
+    scanf("%d", &n);
+    
+    int arr[n];
+    
+    // Read the elements of the array
+    for (i = 0; i < n; i++) { 
+        scanf("%d", &arr[i]); 
+    } 
+    
+    // Check each number in the array to see if it is prime
+    for (int i = 0; i < n; i++) {
+        int isPrime = 1; // Assume arr[i] is prime
+        if (arr[i] <= 1) {
+            isPrime = 0; // Numbers less than or equal to 1 are not prime
+        } else {
+            for (int j = 2; j * j <= arr[i]; j++) {
+                if (arr[i] % j == 0) {
+                    isPrime = 0; // arr[i] is not prime
+                    break;
+                }
+            }
+        }
+
+        if (isPrime) {
+            printf("%d ", arr[i]); // Print the prime number
+        }
+    }
+    
+    return 0;
+}
