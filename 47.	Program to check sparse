@@ -1,25 +1,33 @@
 #include <stdio.h> 
+
 int main() { 
-// Write C code here 
-int i,j,n,total =0; 
-scanf("%d",&n); 
-int arr[n][n]; 
-for(i=0;i<n;i++){ 
-for(j=0;j<n;j++){ 
-scanf("%d",&arr[i][j]); 
-} 
-} 
-for(i=0;i<n;i++){ 
-for(j=0;j<n;j++){ 
-if(arr[i][j]==0){ 
-total++; 
-} 
-} 
-} 
-if(total>(i*j)/2){ 
-printf("\n Is a sparse matrix"); 
-}else{ 
-printf("\nNot"); 
-} 
-return 0; 
+    int i, j, n, total = 0; 
+    scanf("%d", &n); 
+    
+    int arr[n][n]; 
+    
+    // Reading matrix elements
+    for(i = 0; i < n; i++) { 
+        for(j = 0; j < n; j++) { 
+            scanf("%d", &arr[i][j]); 
+        } 
+    } 
+    
+    // Counting the number of zero elements
+    for(i = 0; i < n; i++) { 
+        for(j = 0; j < n; j++) { 
+            if(arr[i][j] == 0) { 
+                total++; 
+            } 
+        } 
+    } 
+    
+    // Check if the matrix is sparse
+    if(total > (n * n) / 2) { 
+        printf("The matrix is sparse\n"); 
+    } else { 
+        printf("The matrix is not sparse\n"); 
+    } 
+    
+    return 0; 
 }
